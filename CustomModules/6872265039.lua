@@ -24,7 +24,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..scripturl, true)
 	end
 end
 local bettergetfocus = function()
@@ -80,7 +80,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..scripturl, true)
 	end
 end
 
@@ -188,7 +188,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -280,11 +280,11 @@ end)
 
 local function getNametagString(plr)
 	local nametag = ""
-	if WhitelistFunctions:CheckPlayerType(plr) == "VAPE PRIVATE" then
-		nametag = '<font color="rgb(127, 0, 255)">[VAPE PRIVATE] '..(plr.DisplayName or plr.Name)..'</font>'
+	if WhitelistFunctions:CheckPlayerType(plr) == "dogvape PRIVATE" then
+		nametag = '<font color="rgb(127, 0, 255)">[dogvape PRIVATE] '..(plr.DisplayName or plr.Name)..'</font>'
 	end
-	if WhitelistFunctions:CheckPlayerType(plr) == "VAPE OWNER" then
-		nametag = '<font color="rgb(255, 80, 80)">[VAPE OWNER] '..(plr.DisplayName or plr.Name)..'</font>'
+	if WhitelistFunctions:CheckPlayerType(plr) == "dogvape OWNER" then
+		nametag = '<font color="rgb(255, 80, 80)">[dogvape OWNER] '..(plr.DisplayName or plr.Name)..'</font>'
 	end
 	if WhitelistFunctions.WhitelistTable.chattags[WhitelistFunctions:Hash(plr.Name..plr.UserId)] then
 		local data = WhitelistFunctions.WhitelistTable.chattags[WhitelistFunctions:Hash(plr.Name..plr.UserId)]
@@ -326,7 +326,7 @@ local function renderNametag(plr)
 				local playerlistplayers = playerlist.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame
 				local targetedplr = playerlistplayers:FindFirstChild("p_"..plr.UserId)
 				if targetedplr then 
-					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("vape/assets/VapeIcon.png")
+					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("vape/assets/TargetIcon.png")
 				end
 			end)
 		end
@@ -503,7 +503,7 @@ end)
 		end 
 		return queuemeta
 	end
-	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.VoidwareDevWindow.Api.CreateOptionsButton({
+	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.dogvapeDevWindow.Api.CreateOptionsButton({
 		Name = 'JoinQueue',
 		NoSave = true,
 		HoverText = 'Starts a match for the provided gamemode.',
@@ -1888,7 +1888,7 @@ task.spawn(function()
 		vapeiconicon.Size = UDim2.new(1, -10, 1, -10)
 		vapeiconicon.AnchorPoint = Vector2.new(0.5, 0.5)
 		vapeiconicon.Position = UDim2.new(0.5, 0, 0.5, 0)
-		vapeiconicon.Image = getsynasset("vape/assets/VapeIcon.png")
+		vapeiconicon.Image = getsynasset("vape/assets/TargetIcon.png")
 		vapeiconicon.Parent = vapeicon
 		local vapeiconcorner = Instance.new("UICorner")
 		vapeiconcorner.CornerRadius = UDim.new(0, 256)
@@ -1930,8 +1930,8 @@ task.spawn(function()
 					GuiLibrary.SelfDestruct()
 				end))
 				game:GetService("StarterGui"):SetCore("SendNotification", {
-					Title = "Vape",
-					Text = "Vape is currently disabled, please use vape later.",
+					Title = "dogvape",
+					Text = "dogvape is currently disabled, please use dogvape later.",
 					Duration = 30,
 				})
 			end
@@ -1946,8 +1946,8 @@ task.spawn(function()
 					GuiLibrary.SelfDestruct()
 				end))
 				game:GetService("StarterGui"):SetCore("SendNotification", {
-					Title = "Vape",
-					Text = "Vape is currently disabled, please use vape later.",
+					Title = "dogvape",
+					Text = "dogvape is currently disabled, please use dogvape later.",
 					Duration = 30,
 				})
 			end
@@ -1965,20 +1965,20 @@ task.spawn(function()
 		pcall(function()
 			if not isfile("vape/Profiles/bedwarsdata.txt") then 
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do 
+				for i,v in pairs(game:HttpGet("https://github.com/IlIllIllIIIIIIII/dogvapev2"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then 
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
 						break
 					end
 				end
-				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true))
+				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..commit.."/CustomModules/bedwarsdata", true))
 			end
 			local olddata = readfile("vape/Profiles/bedwarsdata.txt")
 
 			repeat
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do 
+				for i,v in pairs(game:HttpGet("https://github.com/IlIllIllIIIIIIII/dogvapev2"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then 
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
@@ -1986,7 +1986,7 @@ task.spawn(function()
 					end
 				end
 				
-				local newdata = game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true)
+				local newdata = game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..commit.."/CustomModules/bedwarsdata", true)
 				if newdata ~= olddata then 
 					rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 					olddata = newdata
@@ -2080,7 +2080,7 @@ end)
 
 --[[run(function()
 	local Trolling = {}
-	AutoGamble = GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.CreateOptionsButton({
+	AutoGamble = GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.CreateOptionsButton({
 		Name = 'AutoGamble',
 		HoverText = ':troll:',
 		Function = function(calling)
@@ -2159,7 +2159,7 @@ run(function()
 		end 
 		return queuemeta
 	end
-	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.CreateOptionsButton({
+	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.CreateOptionsButton({
 		Name = 'JoinQueue',
 		NoSave = true,
 		HoverText = 'Starts a match for the provided gamemode.',

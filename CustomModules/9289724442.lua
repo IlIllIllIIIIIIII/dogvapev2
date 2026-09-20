@@ -83,7 +83,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..scripturl, true)
 	end
 end
 local shalib = loadstring(GetURL("Libraries/sha.lua"))()
@@ -185,7 +185,7 @@ if place.Updated ~= "2021-11-05T03:38:34.0141481Z" then
 	image.Parent = GuiLibrary["MainGui"]
     local textlabel = Instance.new("TextLabel")
     textlabel.Size = UDim2.new(1, 0, 1, 36)
-    textlabel.Text = "Vape is currently down for testing due to the prophunt update.\nThe discord has been copied to your clipboard."
+    textlabel.Text = "dogvape is currently down for testing due to the prophunt update.\nThe discord has been copied to your clipboard."
 	textlabel.TextColor3 = Color3.new(1, 1, 1)
     textlabel.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 	textlabel.BackgroundTransparency = 0.5
@@ -259,7 +259,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)

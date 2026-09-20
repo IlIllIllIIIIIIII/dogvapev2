@@ -19,11 +19,11 @@ local VoidwareWhitelistStore = {
 	},
 	RankChangeEvent = Instance.new("BindableEvent"),
 	chatstrings = {
-		voidwaremoment = "Voidware",
+		voidwaremoment = "dogvape",
 		blackwaremoment = "Blackware",
-		voidwarelitemoment = "Voidware Lite"
+		voidwarelitemoment = "dogvape Lite"
 	},
-	LocalPlayer = {Rank = "STANDARD", Attackable = true, Priority = 1, TagText = "VOIDWARE USER", TagColor = "0000FF", TagHidden = true, HWID = "ABCDEFG", Accounts = {}, BlacklistedProducts = {}, UID = 0},
+	LocalPlayer = {Rank = "STANDARD", Attackable = true, Priority = 1, TagText = "dogvape USER", TagColor = "0000FF", TagHidden = true, HWID = "ABCDEFG", Accounts = {}, BlacklistedProducts = {}, UID = 0},
 	Players = {}
 }
 local tags = {}
@@ -38,7 +38,7 @@ local VoidwareStore = {
     },
 	FolderTable = {"vape/Voidware", "vape/Voidware/data"},
 	SystemFiles = {"vape/NewMainScript.lua", "vape/MainScript.lua", "vape/GuiLibrary.lua", "vape/Universal.lua"},
-	watermark = function(text) return ("[Voidware] "..text) end,
+	watermark = function(text) return ("[dogvape] "..text) end,
 	Tweening = false,
 	TimeLoaded = tick(),
 	CurrentPing = 0,
@@ -294,7 +294,7 @@ end
 
 local function InfoNotification(title, text, delay)
 	local suc, res = pcall(function()
-		local frame = GuiLibrary.CreateNotification(title or "Voidware", text or "Successfully called function", delay or 7, "assets/InfoNotification.png")
+		local frame = GuiLibrary.CreateNotification(title or "dogvape", text or "Successfully called function", delay or 7, "assets/InfoNotification.png")
 		return frame
 	end)
 	return (suc and res)
@@ -1832,7 +1832,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(0.302310646, 0, 0.062656641, 0)
-	textlabel.Text = "Thanks for using Voidware :D -erchobg"
+	textlabel.Text = "Thanks for using dogvape :D -erchobg"
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -1933,9 +1933,9 @@ end)
 
 repeat task.wait() until game:IsLoaded()
 --[[if store.matchState == 0 then
-	warningNotification("VoidwareAntiCrash", "Waiting for the game to load...", 5)
+	warningNotification("dogvapeAntiCrash", "Waiting for the game to load...", 5)
 	repeat task.wait() until store.matchState ~= 0
-	warningNotification("VoidwareAntiCrash", "Game Loaded. Loading Voidware now...", 3)
+	warningNotification("dogvapeAntiCrash", "Game Loaded. Loading dogvape now...", 3)
 end--]]
 
 run(function()
@@ -2262,7 +2262,7 @@ run(function()
 						bedwars.QueueController.leaveParty()
 					end
 					if AutoLeaveStaff2.Enabled then
-						warningNotification("Vape", "Staff Detected : "..(plr.DisplayName and plr.DisplayName.." ("..plr.Name..")" or plr.Name).." : Play legit like nothing happened to have the highest chance of not getting banned.", 60)
+						warningNotification("dogvape", "Staff Detected : "..(plr.DisplayName and plr.DisplayName.." ("..plr.Name..")" or plr.Name).." : Play legit like nothing happened to have the highest chance of not getting banned.", 60)
 						GuiLibrary.SaveSettings = function() end
 						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do
 							if v.Type == "OptionsButton" then
@@ -2278,14 +2278,14 @@ run(function()
 					else
 						GuiLibrary.SelfDestruct()
 						game:GetService("StarterGui"):SetCore("SendNotification", {
-							Title = "Vape",
+							Title = "dogvape",
 							Text = "Staff Detected\n"..(plr.DisplayName and plr.DisplayName.." ("..plr.Name..")" or plr.Name),
 							Duration = 60,
 						})
 					end
 					return
 				else
-					warningNotification("Vape", "Staff Detected : "..(plr.DisplayName and plr.DisplayName.." ("..plr.Name..")" or plr.Name), 60)
+					warningNotification("dogvape", "Staff Detected : "..(plr.DisplayName and plr.DisplayName.." ("..plr.Name..")" or plr.Name), 60)
 				end
 			end
 		end)
@@ -2390,7 +2390,7 @@ run(function()
 	AutoLeaveStaff2 = AutoLeave.CreateToggle({
 		Name = "Staff AutoConfig",
 		Function = function() end,
-		HoverText = "Instead of uninjecting, It will now reconfig vape temporarily to a more legit config.",
+		HoverText = "Instead of uninjecting, It will now reconfig dogvape temporarily to a more legit config.",
 		Default = true
 	})
 	AutoLeaveRandom = AutoLeave.CreateToggle({
@@ -3889,9 +3889,9 @@ run(function()
 		HoverText = "Times animation with hit attempt"
 	})
 	killauranovape = Killaura.CreateToggle({
-		Name = "No Vape",
+		Name = "No dogvape",
 		Function = function() end,
-		HoverText = "no hit vape user"
+		HoverText = "no hit dogvape user"
 	})
 	killauranovape.Object.Visible = false
 end)
@@ -7722,7 +7722,7 @@ run(function()
 		adopted = 'Bullying',
 		linlife = 'Bullying',
 		commitnotalive = 'Bullying',
-		vape = 'Offsite Links',
+		dogvape = 'Offsite Links',
 		futureclient = 'Offsite Links',
 		download = 'Offsite Links',
 		youtube = 'Offsite Links',
@@ -7768,13 +7768,13 @@ run(function()
 			if calling then 
 				table.insert(AutoToxic.Connections, vapeEvents.BedwarsBedBreak.Event:Connect(function(bedTable)
 					if AutoToxicBedDestroyed.Enabled and bedTable.brokenBedTeam.id == lplr:GetAttribute('Team') then
-						local custommsg = #AutoToxicPhrases6.ObjectList > 0 and AutoToxicPhrases6.ObjectList[math.random(1, #AutoToxicPhrases6.ObjectList)] or 'Who needs a bed when you got Voidware <name>? | .gg/voidware'
+						local custommsg = #AutoToxicPhrases6.ObjectList > 0 and AutoToxicPhrases6.ObjectList[math.random(1, #AutoToxicPhrases6.ObjectList)] or 'Who needs a bed when you got dogvape <name>?'
 						if custommsg then
 							custommsg = custommsg:gsub('<name>', (bedTable.player.DisplayName or bedTable.player.Name))
 						end
 						textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync(custommsg)
 					elseif AutoToxicBedBreak.Enabled and bedTable.player.UserId == lplr.UserId then
-						local custommsg = #AutoToxicPhrases7.ObjectList > 0 and AutoToxicPhrases7.ObjectList[math.random(1, #AutoToxicPhrases7.ObjectList)] or 'Your bed has been sent to the abyss <teamname>! | .gg/voidware'
+						local custommsg = #AutoToxicPhrases7.ObjectList > 0 and AutoToxicPhrases7.ObjectList[math.random(1, #AutoToxicPhrases7.ObjectList)] or 'Your bed has been sent to the abyss <teamname>!'
 						if custommsg then
 							local team = bedwars.QueueMeta[store.queueType].teams[tonumber(bedTable.brokenBedTeam.id)]
 							local teamname = team and team.displayName:lower() or 'white'
@@ -7791,7 +7791,7 @@ run(function()
 						if killed == lplr then 
 							if (not leavesaid) and killer ~= lplr and AutoToxicDeath.Enabled then
 								leavesaid = true
-								local custommsg = #AutoToxicPhrases3.ObjectList > 0 and AutoToxicPhrases3.ObjectList[math.random(1, #AutoToxicPhrases3.ObjectList)] or 'I was too laggy <name>. That\'s why you won. | .gg/voidware'
+								local custommsg = #AutoToxicPhrases3.ObjectList > 0 and AutoToxicPhrases3.ObjectList[math.random(1, #AutoToxicPhrases3.ObjectList)] or 'I was too laggy <name>. That\'s why you won.'
 								if custommsg then
 									custommsg = custommsg:gsub('<name>', (killer.DisplayName or killer.Name))
 								end
@@ -7799,9 +7799,9 @@ run(function()
 							end
 						else
 							if killer == lplr and AutoToxicFinalKill.Enabled then 
-								local custommsg = #AutoToxicPhrases2.ObjectList > 0 and AutoToxicPhrases2.ObjectList[math.random(1, #AutoToxicPhrases2.ObjectList)] or '<name> things could have ended for you so differently, if you\'ve used Voidware. | .gg/voidware'
+								local custommsg = #AutoToxicPhrases2.ObjectList > 0 and AutoToxicPhrases2.ObjectList[math.random(1, #AutoToxicPhrases2.ObjectList)] or '<name> things could have ended for you so differently, if you\'ve used dogvape.'
 								if custommsg == lastsaid then
-									custommsg = #AutoToxicPhrases2.ObjectList > 0 and AutoToxicPhrases2.ObjectList[math.random(1, #AutoToxicPhrases2.ObjectList)] or '<name> things could have ended for you so differently, if you\'ve used Voidware. | .gg/voidware'
+									custommsg = #AutoToxicPhrases2.ObjectList > 0 and AutoToxicPhrases2.ObjectList[math.random(1, #AutoToxicPhrases2.ObjectList)] or '<name> things could have ended for you so differently, if you\'ve used dogvape.'
 								else
 									lastsaid = custommsg
 								end
@@ -7820,7 +7820,7 @@ run(function()
 							sendmessage('gg')
 						end
 						if AutoToxicWin.Enabled then
-							sendmessage(#AutoToxicPhrases.ObjectList > 0 and AutoToxicPhrases.ObjectList[math.random(1, #AutoToxicPhrases.ObjectList)] or 'Voidware is simply better everyone. | .gg/voidware')
+							sendmessage(#AutoToxicPhrases.ObjectList > 0 and AutoToxicPhrases.ObjectList[math.random(1, #AutoToxicPhrases.ObjectList)] or 'dogvape is simply better everyone.')
 						end
 					end
 				end))
@@ -7835,7 +7835,7 @@ run(function()
 								if custommsg then
 									custommsg = custommsg:gsub('<name>', (plr.DisplayName or plr.Name))
 								end
-								local msg = (custommsg or getrandomvalue(rendermessages[1]):gsub('<name>', plr.DisplayName)..' | .gg/voidware')
+								local msg = (custommsg or getrandomvalue(rendermessages[1]):gsub('<name>', plr.DisplayName)..'')
 								sendmessage(msg)
 							end
 						end
@@ -9336,7 +9336,7 @@ task.spawn(function()
 		vapeiconicon.Size = UDim2.new(1, -10, 1, -10)
 		vapeiconicon.AnchorPoint = Vector2.new(0.5, 0.5)
 		vapeiconicon.Position = UDim2.new(0.5, 0, 0.5, 0)
-		vapeiconicon.Image = getcustomasset("vape/assets/VapeIcon.png")
+		vapeiconicon.Image = getcustomasset("vape/assets/TargetIcon.png")
 		vapeiconicon.Parent = vapeicon
 		local vapeiconcorner = Instance.new("UICorner")
 		vapeiconcorner.CornerRadius = UDim.new(0, 256)
@@ -9378,8 +9378,8 @@ task.spawn(function()
 					GuiLibrary.SelfDestruct()
 				end))
 				game:GetService("StarterGui"):SetCore("SendNotification", {
-					Title = "Vape",
-					Text = "Vape is currently disabled, please use vape later.",
+					Title = "dogvape",
+					Text = "dogvape is currently disabled, please use dogvape later.",
 					Duration = 30,
 				})
 			end
@@ -9394,8 +9394,8 @@ task.spawn(function()
 					GuiLibrary.SelfDestruct()
 				end))
 				game:GetService("StarterGui"):SetCore("SendNotification", {
-					Title = "Vape",
-					Text = "Vape is currently disabled, please use vape later.",
+					Title = "dogvape",
+					Text = "dogvape is currently disabled, please use dogvape later.",
 					Duration = 30,
 				})
 			end
@@ -9413,20 +9413,20 @@ task.spawn(function()
 		pcall(function()
 			if not isfile("vape/Profiles/bedwarsdata.txt") then 
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do 
+				for i,v in pairs(game:HttpGet("https://github.com/IlIllIllIIIIIIII/dogvapev2"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then 
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
 						break
 					end
 				end
-				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true))
+				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..commit.."/CustomModules/bedwarsdata", true))
 			end
 			local olddata = readfile("vape/Profiles/bedwarsdata.txt")
 
 			repeat
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do 
+				for i,v in pairs(game:HttpGet("https://github.com/IlIllIllIIIIIIII/dogvapev2"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then 
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
@@ -9434,7 +9434,7 @@ task.spawn(function()
 					end
 				end
 				
-				local newdata = game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true)
+				local newdata = game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..commit.."/CustomModules/bedwarsdata", true)
 				if newdata ~= olddata then 
 					rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 					olddata = newdata
@@ -9685,7 +9685,7 @@ end)
 local vapeAssert = function(argument, title, text, duration, hault, moduledisable, module) 
 	if not argument then
     local suc, res = pcall(function()
-    local notification = GuiLibrary.CreateNotification(title or "Voidware", text or "Failed to call function.", duration or 20, "assets/WarningNotification.png")
+    local notification = GuiLibrary.CreateNotification(title or "dogvape", text or "Failed to call function.", duration or 20, "assets/WarningNotification.png")
     notification.IconLabel.ImageColor3 = Color3.new(220, 0, 0)
     notification.Frame.Frame.ImageColor3 = Color3.new(220, 0, 0)
     if moduledisable and (module and GuiLibrary.ObjectsThatCanBeSaved[module.."OptionsButton"].Api.Enabled) then GuiLibrary.ObjectsThatCanBeSaved[module.."OptionsButton"].Api.ToggleButton(false) end
@@ -10413,13 +10413,13 @@ run(function()
 	credits = NoEmoteWheel.CreateCredits({
         Name = 'CreditsButtonInstance',
         ButtonText = 'Show Credits',
-        Credits = 'Vape+ Booster'
+        Credits = 'dogvape+ Booster'
     })
 end)
 
 run(function()
 	local GetHost = {Enabled = false}
-	GetHost = GuiLibrary.ObjectsThatCanBeSaved.VoidwareDevWindow.Api.CreateOptionsButton({
+	GetHost = GuiLibrary.ObjectsThatCanBeSaved.dogvapeDevWindow.Api.CreateOptionsButton({
 		Name = "GetHost",
 		HoverText = ":troll:",
 		Function = function(callback) 
@@ -10659,7 +10659,7 @@ end)--]]
 			
 			Converted["_ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			Converted["_ScreenGui"].Parent = plrgui
-			Converted["_ScreenGui"].Name = "WatermarkVoidWareLol"
+			Converted["_ScreenGui"].Name = "WatermarkdogvapeLol"
 			
 			Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(17.00000088661909, 17.00000088661909, 17.00000088661909)
 			Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -10682,7 +10682,7 @@ end)--]]
 			Converted["_UIStroke"].Parent = Converted["_Frame"]
 			
 			Converted["_TextLabel"].Font = Enum.Font.Sarpanch
-			Converted["_TextLabel"].Text = "VoidWare | FPS | .gg/e2HUEAmsuA"
+			Converted["_TextLabel"].Text = "dogvape | FPS"
 			Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
 			Converted["_TextLabel"].TextScaled = true
 			Converted["_TextLabel"].TextSize = 14
@@ -10841,7 +10841,7 @@ end)--]]
 					local current = tick()
 					if current - lastupdate >= 1 then
 						local fps = math.floor(framecounter / (current - lastupdate))
-						parent.Text = "VoidWare | " .. fps .. " FPS | .gg/e2HUEAmsuA"
+						parent.Text = "dogvape | " .. fps .. " FPS"
 						lastupdate = current
 						framecounter = 0
 					end
@@ -10853,8 +10853,8 @@ end)--]]
 			coroutine.wrap(TextUpdateOmegaLul)()
 		else 
 			local plrgui = game.Players.LocalPlayer.PlayerGui
-			if plrgui:FindFirstChild("WatermarkVoidWareLol") then 
-				local watermark = plrgui:FindFirstChild("WatermarkVoidWareLol") 
+			if plrgui:FindFirstChild("WatermarkdogvapeLol") then
+				local watermark = plrgui:FindFirstChild("WatermarkdogvapeLol")
 				watermark:Destroy()
 			else
 				warningNotification("WaterMark Error", "Couldn't find the watermark in playergui, please dm salad about this", 60)
@@ -11540,7 +11540,7 @@ run(function()
 							InfoNotification('HackerDetector', plr.DisplayName..' is using Teleport Exploit!', 100) 
 							table.insert(detectedusers.Teleport, plr)
 							cachedetection(plr, 'Teleport')
-							whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+							whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 							if RenderFunctions.playerTags[plr] == nil then 
 								RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 							end
@@ -11563,7 +11563,7 @@ run(function()
 					local magnitude = (plr.Character.HumanoidRootPart.Position - oldpos).Magnitude
 					if (plr:GetAttribute('LastTeleported') - lastbwteleport) ~= 0 and magnitude >= ((distances[plr:GetAttribute('PlayingAsKit') or ''] or 25) + (playerRaycasted(plr, Vector3.new(0, -15, 0)) and 0 or 40)) then 
 						InfoNotification('HackerDetector', plr.DisplayName..' is using speed!', 60)
-						whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+						whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 						if RenderFunctions.playerTags[plr] == nil then 
 							RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 						end
@@ -11582,7 +11582,7 @@ run(function()
 						InfoNotification('HackerDetector', plr.DisplayName..' is using InfiniteFly!', 60) 
 						cachedetection(plr, 'InfiniteFly')
 						table.insert(detectedusers.InfiniteFly, plr)
-						whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+						whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 						if RenderFunctions.playerTags[plr] == nil then 
 							RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 						end
@@ -11601,7 +11601,7 @@ run(function()
 						InfoNotification('HackerDetector', plr.DisplayName..' is using Invisibility!', 60) 
 						table.insert(detectedusers.Invisibility, plr)
 						cachedetection(plr, 'Invisibility')
-						whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+						whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 						if RenderFunctions.playerTags[plr] == nil then 
 							RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 						end
@@ -11619,7 +11619,7 @@ run(function()
 					if plr.Name == name then 
 						InfoNotification('HackerDetector', plr.DisplayName..' is the owner of Godsploit! They\'re is most likely cheating.', 60) 
 						cachedetection(plr, 'Name')
-						whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+						whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 						if RenderFunctions.playerTags[plr] == nil then 
 							RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 						end 
@@ -11643,7 +11643,7 @@ run(function()
 			if type(response) == 'table' and response[plr.Name] then 
 				InfoNotification('HackerDetector', plr.DisplayName..' is cached on the exploiter database!', 30)
 				table.insert(detectedusers.Cached, plr)
-				whitelist.customtags[plr.Name] = {{text = 'VAPE USER', color = Color3.new(1, 1, 0)}}
+				whitelist.customtags[plr.Name] = {{text = 'dogvape USER', color = Color3.new(1, 1, 0)}}
 				if RenderFunctions.playerTags[plr] == nil then 
 					RenderFunctions:CreatePlayerTag(plr, 'SCRIPT KIDDIE', 'FF0000') 
 				end
@@ -11893,7 +11893,7 @@ run(function()
 		end 
 		return queuemeta
 	end
-	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.CreateOptionsButton({
+	JoinQueue = GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.CreateOptionsButton({
 		Name = 'JoinQueue',
 		NoSave = true,
 		HoverText = 'Starts a match for the provided gamemode.',
@@ -11944,7 +11944,7 @@ run(function()
 			if calling then 
 				task.spawn(function()
 					while wait(1) and AutoBedDefense.Enabled do
-						--GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.OptionsButtons.BedProtector.ToggleButton(true)
+						--GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.OptionsButtons.BedProtector.ToggleButton(true)
 						GuiLibrary.ObjectsThatCanBeSaved.BedProtectorOptionsButton.Api.ToggleButton()
 					end
 				end)
@@ -12644,7 +12644,7 @@ run(function()
 	credits = instaWinExploit.CreateCredits({
         Name = 'CreditsButtonInstance',
         ButtonText = 'Show Credits',
-        Credits = 'Vape+ Booster'
+        Credits = 'dogvape+ Booster'
     })
 end)
 
@@ -13400,7 +13400,7 @@ end)
 --[[local GuiLibrary = shared.GuiLibrary
 run(function()
 	local ScytheDisabler = {}
-	ScytheDisabler = GuiLibrary.ObjectsThatCanBeSaved.VoidwareDevWindow.Api.CreateOptionsButton({
+	ScytheDisabler = GuiLibrary.ObjectsThatCanBeSaved.dogvapeDevWindow.Api.CreateOptionsButton({
 		Name = 'ScytheDisabler',
 		HoverText = "Works on everymatch (you need forge mechanic).",
 		Function = function(calling)
@@ -13449,7 +13449,7 @@ end)]]
 			game:GetService("ReplicatedStorage").Modules:FindFirstChild("anticheat"):Destroy()
 		end
 	end
-	Disabler = GuiLibrary.ObjectsThatCanBeSaved.VoidwareDevWindow.Api.CreateOptionsButton({
+	Disabler = GuiLibrary.ObjectsThatCanBeSaved.dogvapeDevWindow.Api.CreateOptionsButton({
 		Name = "Disabler",
 		Function = function(callback)
 			if callback then
@@ -13560,7 +13560,7 @@ end)--]]
 			et = 0
 		end
 	end
-    enchantexploit = GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.CreateOptionsButton({
+    enchantexploit = GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.CreateOptionsButton({
         Name = 'EnchantExploit',
         HoverText = 'Gives you most enchants.',
         Function = function(calling)
@@ -13639,7 +13639,7 @@ end)--]]
 end)--]]
 --[[run(function()
 	local InstantEmeraldArmour = {}
-	InstantEmeraldArmour = GuiLibrary.ObjectsThatCanBeSaved.VoidwareWindow.Api.CreateOptionsButton({
+	InstantEmeraldArmour = GuiLibrary.ObjectsThatCanBeSaved.dogvapeWindow.Api.CreateOptionsButton({
 		Name = 'InstantEmeraldArmour',
 		Function = function(calling)
 			if calling then 
@@ -14384,18 +14384,18 @@ run(function()
 end)
 
 --[[run(function()
-	local VapePrivateDetector = {Enabled = false}
+	local ClientRankDetector = {Enabled = false}
 	local VPLeave = {Enabled = false}
 	local alreadydetected = {}
-	VapePrivateDetector = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "VapePrivateDetector",
+	ClientRankDetector = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+		Name = "ClientRankDetector",
 		Function = function(callback)
 			if callback then
 				task.spawn(function()
 					if not shared.vapewhitelist.loaded then 
-						repeat task.wait() until shared.vapewhitelist.loaded or not VapePrivateDetector.Enabled
+						repeat task.wait() until shared.vapewhitelist.loaded or not ClientRankDetector.Enabled
 					end
-					if not VapePrivateDetector.Enabled then 
+					if not ClientRankDetector.Enabled then
 						return 
 					end
 					for i,v in pairs(playersService:GetPlayers()) do
@@ -14403,7 +14403,7 @@ end)
 							local rank = shared.vapewhitelist:get(v)
 							if rank > 0 and not table.find(alreadydetected, v) then
 								local rankstring = rank == 1 and "Private Member" or rank > 1 and "Owner"
-								warningNotification("VapePrivateDetector", "Vape "..rankstring.." Detected! | "..v.DisplayName, 120)
+								warningNotification("ClientRankDetector", "dogvape "..rankstring.." Detected! | "..v.DisplayName, 120)
 								table.insert(alreadydetected, v)
 								if VPLeave.Enabled then
 									local newserver = nil
@@ -14413,11 +14413,11 @@ end)
 							end
 						end
 					end
-					table.insert(VapePrivateDetector.Connections, playersService.PlayerAdded:Connect(function(v)
+					table.insert(ClientRankDetector.Connections, playersService.PlayerAdded:Connect(function(v)
 						local rank = shared.vapewhitelist:get(v)
 						if rank > 0 and not table.find(alreadydetected, v) then
 						local rankstring = rank == 1 and "Private Member" or rank > 1 and "Owner"
-						warningNotification("VapePrivateDetector", "Vape "..rankstring.." Detected! | "..v.DisplayName, 120)
+						warningNotification("ClientRankDetector", "dogvape "..rankstring.." Detected! | "..v.DisplayName, 120)
 						table.insert(alreadydetected, v)
 						if VPLeave.Enabled then
 							local newserver = nil
@@ -14430,7 +14430,7 @@ end)
 			end
 		end
 	})
-	VPLeave = VapePrivateDetector.CreateToggle({
+	VPLeave = ClientRankDetector.CreateToggle({
 		Name = "ServerHop",
 		HoverText = "switches servers on detection.",
 		Function = function() end
@@ -14438,7 +14438,7 @@ end)
 	task.spawn(function()
 		repeat task.wait() until shared.vapewhitelist.loaded 
 		if shared.vapewhitelist:get(lplr) ~= 0 then 
-			pcall(GuiLibrary.RemoveObject, "VapePrivateDetectorOptionsButton")
+			pcall(GuiLibrary.RemoveObject, "ClientRankDetectorOptionsButton")
 		end
 	end)
 end)--]]
@@ -15058,7 +15058,7 @@ run(function()
 
 										local tag_data = shared.vapewhitelist:tag(needed_plr)
 										if tag_data and #tag_data > 0 then
-											if tag_data[1]["text"] == "VOIDWARE USER" then rank = "Normal" end
+											if tag_data[1]["text"] == "dogvape USER" then rank = "Normal" end
 											local tag_text = tag_data[1]["text"].." - "..rank
 											local tag_color = tag_data[1]["color"]
 											local updated_text = add_colored_text(current_text, tag_text, tag_color)
@@ -15120,7 +15120,7 @@ end)--]]
 
 --[[run(function()
 	local FortunaExploit = {}
-	FortunaExploit = GuiLibrary.ObjectsThatCanBeSaved.VoidwareDevWindow.Api.CreateOptionsButton({
+	FortunaExploit = GuiLibrary.ObjectsThatCanBeSaved.dogvapeDevWindow.Api.CreateOptionsButton({
 		Name = 'test_fortuna_Exploit',
 		Function = function(calling)
 			if calling then 
@@ -15383,7 +15383,7 @@ run(function()
 	})
 end)
 
-warningNotification('Voidware ' .. void.version, 'Loaded in ' .. string.format('%.1f', void.round(tick() - void.load))..'s. Logged in as ' .. lplr.Name .. '.', 7)
+warningNotification('dogvape ' .. void.version, 'Loaded in ' .. string.format('%.1f', void.round(tick() - void.load))..'s. Logged in as ' .. lplr.Name .. '.', 7)
 shared.GlobalStore = store
 local ProtectedModules
 task.spawn(function()
@@ -15396,14 +15396,14 @@ end)
 	local suc, err = pcall(function()
 		loadstring(vapeGithubRequest('vape/Libraries/Protected_6872274481.lua'))()
 	end)
-	if err then if shared.VapeDeveloper then InfoNotification("Voidware Whitelist", "Failure loading whitelist modules. Error: "..tostring(err), 7) end warn("VoidwareWhitelist_ErrorReport: "..tostring(err)) end
+	if err then if shared.VapeDeveloper then InfoNotification("dogvape Whitelist", "Failure loading whitelist modules. Error: "..tostring(err), 7) end warn("dogvapeWhitelist_ErrorReport: "..tostring(err)) end
 end)--]]
 --[[task.spawn(function()
 	repeat task.wait() until shared.VapeFullyLoaded 
 	pcall(function()
 		if shared.GuiLibrary.ObjectsThatCanBeSaved["Extra modeToggle"].Api.Enabled == true then
 			local suc, err = pcall(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/Libraries/ExtraModules.lua", true))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/Libraries/ExtraModules.lua", true))()
 			end)
 			if err then if shared.VapeDeveloper then InfoNotification("ExtraModules", "Failure loading! Error: "..tostring(err)) end warn("[ExtraModules] Failure loading! Error: "..tostring(err)) end
 		end
