@@ -82,7 +82,7 @@ local function GetURL(scripturl)
 		assert(betterisfile("vape/"..scripturl), "File not found : vape/"..scripturl)
 		return readfile("vape/"..scripturl)
 	else
-		local res = game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		local res = game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..scripturl, true)
 		assert(res ~= "404: Not Found", "File not found : vape/"..scripturl)
 		return res
 	end
@@ -117,13 +117,13 @@ if shared.RequireTable == nil then
             prompt._hideErrorCode = true
             local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
             prompt:setParent(gui)
-            prompt:setErrorTitle("Vape")
+            prompt:setErrorTitle("dogvape")
             prompt:updateButtons({{
                 Text = "OK",
                 Callback = function() prompt:_close() end,
                 Primary = true
             }}, 'Default')
-            prompt:_open("Your exploit is unsupported by Phantom Forces Vape.")
+            prompt:_open("Your exploit is unsupported by Phantom Forces dogvape.")
             task.wait(9e9)
 		end
 	end
@@ -219,7 +219,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)

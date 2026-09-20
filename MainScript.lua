@@ -82,12 +82,7 @@ local vapeAssetTable = {
 	["vape/assets/WarningNotification.png"] = "rbxassetid://13350794868",
 	["vape/assets/WindowBlur.png"] = "rbxassetid://13350795660",
 	["vape/assets/WorldIcon.png"] = "rbxassetid://13350796199",
-	["vape/assets/VapeIcon.png"] = "rbxassetid://13350808582",
 	["vape/assets/RenderIcon.png"] = "rbxassetid://13350832775",
-	["vape/assets/VapeLogo1.png"] = "rbxassetid://18391256757",
-	["vape/assets/VapeLogo3.png"] = "rbxassetid://18391160743",
-	["vape/assets/VapeLogo2.png"] = "rbxassetid://13350876307",
-	["vape/assets/VapeLogo4.png"] = "rbxassetid://13350877564"
 }
 local Platform = inputService:GetPlatform()
 
@@ -110,7 +105,7 @@ local function displayErrorPopup(text, funclist)
 	local prompt = ErrorPrompt.new("Default")
 	prompt._hideErrorCode = true
 	local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-	prompt:setErrorTitle("Vape")
+	prompt:setErrorTitle("dogvape")
 	local funcs
 	if funclist then 
 		funcs = {}
@@ -171,7 +166,7 @@ end
 local ProtectedFunctions = loadstring(vapeGithubRequest("Libraries/funything.lua"))()
 shared.ProtectedFunctions = ProtectedFunctions
 
-assert(not shared.VapeExecuted, "Vape Already Injected")
+assert(not shared.VapeExecuted, "dogvape Already Injected")
 shared.VapeExecuted = true
 
 for i,v in pairs({baseDirectory:gsub("/", ""), "vape", "vape/Libraries", "vape/CustomModules", "vape/Profiles", baseDirectory.."Profiles", "vape/assets"}) do 
@@ -206,7 +201,7 @@ if not isfile("vape/CustomModules/cachechecked.txt") then
 		end
 	end
 	if isNotCached and not shared.VapeDeveloper then
-		displayErrorPopup("Vape has detected uncached files, If you have CustomModules click no, else click yes.", {No = function() end, Yes = function()
+		displayErrorPopup("dogvape has detected uncached files, If you have CustomModules click no, else click yes.", {No = function() end, Yes = function()
 			for i,v in pairs({"vape/Universal.lua", "vape/MainScript.lua", "vape/GuiLibrary.lua"}) do 
 				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 					delfile(v)
@@ -216,7 +211,7 @@ if not isfile("vape/CustomModules/cachechecked.txt") then
 				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 					local last = v:split('\\')
 					last = last[#last]
-					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..readfile("vape/commithash.txt").."/CustomModules/"..last) end)
+					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..readfile("vape/commithash.txt").."/CustomModules/"..last) end)
 					if suc and publicrepo and publicrepo ~= "404: Not Found" then
 						writefile("vape/CustomModules/"..last, "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
 					end
@@ -289,7 +284,7 @@ local World = GuiLibrary.CreateWindow({
 	IconSize = 16
 })
 local Voidware = GuiLibrary.CreateWindow({
-	Name = "Voidware", 
+	Name = "dogvape",
 	Icon = "vape/assets/UtilityIcon.png", 
 	IconSize = 17
 })
@@ -299,7 +294,7 @@ local GameScripts = GuiLibrary.CreateWindow({
 	IconSize = 17
 })
 local VoidwareDev = GuiLibrary.CreateWindow({
-	Name = "VoidwareDev", 
+	Name = "dogvapeDev",
 	Icon = "vape/assets/HoverArrow2.png", 
 	IconSize = 17
 })
@@ -326,7 +321,7 @@ local Profiles = GuiLibrary.CreateWindow2({
 --- pro moment eeheasdalsdjlasjkjd
 task.spawn(function()
 	pcall(function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/Libraries/idklol.lua", true))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/Libraries/idklol.lua", true))()
 	end)
 end)
 GUI.CreateDivider()
@@ -361,7 +356,7 @@ GUI.CreateButton({
 	IconSize = 16
 })
 GUI.CreateButton({
-	Name = "Voidware", 
+	Name = "dogvape",
 	Function = function(callback) Voidware.SetVisible(callback) end, 
 	Icon = "vape/assets/UtilityIcon.png", 
 	IconSize = 17
@@ -373,7 +368,7 @@ GUI.CreateButton({
 })
 GUI.CreateDivider("Other")
 GUI.CreateButton({
-	Name = "VoidwareDev", 
+	Name = "dogvapeDev",
 	Function = function(callback) VoidwareDev.SetVisible(callback) end, 
 })
 GUI.CreateButton({
@@ -857,35 +852,41 @@ local VapeLogoFrame = Instance.new("Frame")
 VapeLogoFrame.BackgroundTransparency = 1
 VapeLogoFrame.Size = UDim2.new(1, 0, 1, 0)
 VapeLogoFrame.Parent = TextGUI.GetCustomChildren()
-local VapeLogo = Instance.new("ImageLabel")
+local VapeLogo = Instance.new("TextLabel")
 VapeLogo.Parent = VapeLogoFrame
 VapeLogo.Name = "Logo"
-VapeLogo.Size = UDim2.new(0, 100, 0, 27)
+VapeLogo.Size = UDim2.new(0, 49, 0, 30)
 VapeLogo.Position = UDim2.new(1, -140, 0, 3)
 VapeLogo.BackgroundColor3 = Color3.new()
 VapeLogo.BorderSizePixel = 0
 VapeLogo.BackgroundTransparency = 1
 VapeLogo.Visible = true
-VapeLogo.Image = downloadVapeAsset("vape/assets/VapeLogo3.png")
-local VapeLogoV4 = Instance.new("ImageLabel")
+VapeLogo.Text = "dog"
+VapeLogo.Font = Enum.Font.GothamBold
+VapeLogo.TextSize = 28
+VapeLogo.TextColor3 = Color3.new(1, 1, 1)
+local VapeLogoV4 = Instance.new("TextLabel")
 VapeLogoV4.Parent = VapeLogo
-VapeLogoV4.Size = UDim2.new(0, 41, 0, 24)
+VapeLogoV4.Size = UDim2.new(0, 69, 0, 30)
 VapeLogoV4.Name = "Logo2"
-VapeLogoV4.Position = UDim2.new(1, 0, 0, 1)
+VapeLogoV4.Position = UDim2.new(1, 0, 0, 0)
 VapeLogoV4.BorderSizePixel = 0
 VapeLogoV4.BackgroundColor3 = Color3.new()
 VapeLogoV4.BackgroundTransparency = 1
-VapeLogoV4.Image = downloadVapeAsset("vape/assets/VapeLogo4.png")
+VapeLogoV4.Text = "vape"
+VapeLogoV4.Font = Enum.Font.GothamBold
+VapeLogoV4.TextSize = 28
+VapeLogoV4.TextColor3 = Color3.new(1, 1, 1)
 local VapeLogoShadow = VapeLogo:Clone()
-VapeLogoShadow.ImageColor3 = Color3.new()
-VapeLogoShadow.ImageTransparency = 0.5
+VapeLogoShadow.TextColor3 = Color3.new()
+VapeLogoShadow.TextTransparency = 0.5
 VapeLogoShadow.ZIndex = 0
 VapeLogoShadow.Position = UDim2.new(0, 1, 0, 1)
 VapeLogoShadow.Visible = false
 VapeLogoShadow.Parent = VapeLogo
-VapeLogoShadow.Logo2.ImageColor3 = Color3.new()
+VapeLogoShadow.Logo2.TextColor3 = Color3.new()
 VapeLogoShadow.Logo2.ZIndex = 0
-VapeLogoShadow.Logo2.ImageTransparency = 0.5
+VapeLogoShadow.Logo2.TextTransparency = 0.5
 local VapeLogoGradient = Instance.new("UIGradient")
 VapeLogoGradient.Rotation = 90
 VapeLogoGradient.Parent = VapeLogo
@@ -1138,27 +1139,31 @@ TextGUIMode = TextGUI.CreateDropdown({
 			end
 		end
 		if val == "Drawing" then
-			local VapeLogoDrawing = Drawing.new("Image")
-			VapeLogoDrawing.Data = readfile("vape/assets/VapeLogo3.png")
-			VapeLogoDrawing.Size = VapeLogo.AbsoluteSize
+			local VapeLogoDrawing = Drawing.new("Text")
+			VapeLogoDrawing.Text = "dog"
+			VapeLogoDrawing.Font = 2
+			VapeLogoDrawing.Size = VapeLogo.AbsoluteSize.Y
 			VapeLogoDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(0, 36)
 			VapeLogoDrawing.ZIndex = 2
 			VapeLogoDrawing.Visible = VapeLogo.Visible
-			local VapeLogoV4Drawing = Drawing.new("Image")
-			VapeLogoV4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
-			VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
+			local VapeLogoV4Drawing = Drawing.new("Text")
+			VapeLogoV4Drawing.Text = "vape"
+			VapeLogoV4Drawing.Font = 2
+			VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize.Y
 			VapeLogoV4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(0, 36)
 			VapeLogoV4Drawing.ZIndex = 2
 			VapeLogoV4Drawing.Visible = VapeLogo.Visible
-			local VapeLogoShadowDrawing = Drawing.new("Image")
-			VapeLogoShadowDrawing.Data = readfile("vape/assets/VapeLogo3.png")
-			VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize
+			local VapeLogoShadowDrawing = Drawing.new("Text")
+			VapeLogoShadowDrawing.Text = "dog"
+			VapeLogoShadowDrawing.Font = 2
+			VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize.Y
 			VapeLogoShadowDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(1, 37)
 			VapeLogoShadowDrawing.Transparency = 0.5
 			VapeLogoShadowDrawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
-			local VapeLogo4Drawing = Drawing.new("Image")
-			VapeLogo4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
-			VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
+			local VapeLogo4Drawing = Drawing.new("Text")
+			VapeLogo4Drawing.Text = "vape"
+			VapeLogo4Drawing.Font = 2
+			VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize.Y
 			VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
 			VapeLogo4Drawing.Transparency = 0.5
 			VapeLogo4Drawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
@@ -1192,8 +1197,8 @@ TextGUIMode = TextGUI.CreateDropdown({
 				VapeLogoShadowDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(1, 37)
 			end))
 			table.insert(TextGUIConnections, VapeLogo:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-				VapeLogoDrawing.Size = VapeLogo.AbsoluteSize
-				VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize
+				VapeLogoDrawing.Size = VapeLogo.AbsoluteSize.Y
+				VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize.Y
 				VapeCustomDrawingText.Size = 30 * VapeScale.Scale
 				VapeCustomDrawingShadow.Size = 30 * VapeScale.Scale
 			end))
@@ -1202,8 +1207,8 @@ TextGUIMode = TextGUI.CreateDropdown({
 				VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
 			end))
 			table.insert(TextGUIConnections, VapeLogoV4:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-				VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
-				VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
+				VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize.Y
+				VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize.Y
 			end))
 			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
 				VapeCustomDrawingText.Position = VapeCustomText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeCustomText.AbsoluteSize.X - VapeCustomDrawingText.TextBounds.X), 32)
@@ -1312,7 +1317,7 @@ TextGUI.CreateToggle({
 		VapeLogo.Visible = callback
 		GuiLibrary.UpdateHudEvent:Fire()
 	end,
-	HoverText = "Renders a vape watermark"
+	HoverText = "Renders a dogvape watermark"
 })
 TextGUIBackgroundToggle = TextGUI.CreateToggle({
 	Name = "Render background", 
@@ -1612,7 +1617,7 @@ local ExtraModeToggle = GUI.CreateToggle({
 --[[local ChangesDetectorToggle = GUI.CreateToggle({
 	Name = "Changes Detector",
 	Function = function() end,
-	HoverText = "Notifies you if anything gets added/removed in Voidware."
+	HoverText = "Notifies you if anything gets added/removed in dogvape."
 })--]]
 local windowSortOrder = {
 	CombatButton = 1,
@@ -1620,13 +1625,13 @@ local windowSortOrder = {
 	RenderButton = 3,
 	UtilityButton = 4,
 	WorldButton = 5,
-	VoidwareButton = 6,
+	dogvapeButton = 6,
 	CustomScriptsButton = 7,
 	FriendsButton = 8,
 	TargetsButton = 9,
 	ProfilesButton = 10
 }
-local windowSortOrder2 = {"Combat", "Blatant", "Render", "Utility", "World", "Voidware", "CustomScripts"}
+local windowSortOrder2 = {"Combat", "Blatant", "Render", "Utility", "World", "dogvape", "CustomScripts"}
 
 local function getVapeSaturation(val)
 	local sat = 0.9
@@ -1652,7 +1657,7 @@ GuiLibrary.UpdateUI = function(h, s, val, bypass)
 		local mainRainbowGradient = h + (rainbowGUICheck and -0.05 or 0)
 		mainRainbowGradient = mainRainbowGradient % 1
 
-		GuiLibrary.ObjectsThatCanBeSaved.GUIWindow.Object.Logo1.Logo2.ImageColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
+		GuiLibrary.ObjectsThatCanBeSaved.GUIWindow.Object.Logo1.Logo2.TextColor3 = Color3.fromHSV(h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
 		VapeText.TextColor3 = Color3.fromHSV(TextGUIGradient.Enabled and mainRainbowGradient or h, mainRainbowSaturation, rainbowGUICheck and 1 or val)
 		VapeCustomText.TextColor3 = VapeText.TextColor3
 		VapeLogoGradient.Color = ColorSequence.new({
@@ -1845,7 +1850,7 @@ if not shared.NoAutoExecute then
 				if shared.VapeDeveloper then 
 					loadstring(readfile("vape/NewMainScript.lua"))() 
 				else 
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/NewMainScript.lua", true))()
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/NewMainScript.lua", true))()
 				end
 			]]
 			if shared.VapeDeveloper then
@@ -1960,7 +1965,7 @@ GUISettings.CreateButton2({
 			RenderWindow = 4,
 			UtilityWindow = 5,
 			WorldWindow = 6,
-			VoidwareWindow = 7,
+			dogvapeWindow = 7,
 			CustomScriptsWindow = 8,
 			FriendsWindow = 9,
 			TargetsWindow = 10,
@@ -2011,7 +2016,7 @@ local function loadVape()
 			loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
 		else
 			if not shared.VapeDeveloper then
-				local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..readfile("vape/commithash.txt").."/CustomModules/"..game.PlaceId..".lua") end)
+				local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..readfile("vape/commithash.txt").."/CustomModules/"..game.PlaceId..".lua") end)
 				if suc and publicrepo and publicrepo ~= "404: Not Found" then
 					writefile("vape/CustomModules/"..game.PlaceId..".lua", "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
 					loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
@@ -2043,7 +2048,7 @@ local function loadVape()
 	if not shared.VapeSwitchServers then
 		if BlatantModeToggle.Enabled then
 			pcall(function()
-				local frame = GuiLibrary.CreateNotification("Blatant Enabled", "Vape is now in Blatant Mode.", 5.5, "assets/WarningNotification.png")
+				local frame = GuiLibrary.CreateNotification("Blatant Enabled", "dogvape is now in Blatant Mode.", 5.5, "assets/WarningNotification.png")
 				frame.Frame.Frame.ImageColor3 = Color3.fromRGB(236, 129, 44)
 			end)
 		end

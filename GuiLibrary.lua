@@ -1,5 +1,6 @@
 if shared.VapeExecuted then
-	local discord_code = "voidware"
+	local discord_code = shared.dogvapeDiscordCode
+	local projectUrl = "https://github.com/IlIllIllIIIIIIII/dogvapev2"
 	shared.discord_code = discord_code
 	local VERSION = "4.10"..(shared.VapePrivate and " PRIVATE" or "").." "..readfile("vape/commithash.txt"):sub(1, 6)
 	local baseDirectory = (shared.VapePrivate and "vapeprivate/" or "vape/")
@@ -65,12 +66,7 @@ if shared.VapeExecuted then
 		["vape/assets/WarningNotification.png"] = "rbxassetid://13350794868",
 		["vape/assets/WindowBlur.png"] = "rbxassetid://13350795660",
 		["vape/assets/WorldIcon.png"] = "rbxassetid://13350796199",
-		["vape/assets/VapeIcon.png"] = "rbxassetid://13350808582",
 		["vape/assets/RenderIcon.png"] = "rbxassetid://13350832775",
-		["vape/assets/VapeLogo1.png"] = "rbxassetid://18391256757",
-		["vape/assets/VapeLogo3.png"] = "rbxassetid://18391160743",
-		["vape/assets/VapeLogo2.png"] = "rbxassetid://13350876307",
-		["vape/assets/VapeLogo4.png"] = "rbxassetid://13350877564"
 	}
 	local getcustomasset = getsynasset or getcustomasset or function(location) return vapeAssetTable[location] or "" end
 	local customassetcheck = (getsynasset or getcustomasset) and true
@@ -97,6 +93,19 @@ if shared.VapeExecuted then
 		MobileButtons = {},
 		RainbowSliders = {}
 	}
+	-- Resolve legacy keys for saved profiles and inherited extensions without
+	-- inserting duplicate windows into the lists traversed by the UI.
+	setmetatable(GuiLibrary.ObjectsThatCanBeSaved, {
+		__index = function(objects, key)
+			if type(key) == "string" then
+				local renamed = key:gsub("^Voidware", "dogvape")
+					:gsub("VapePrivateDetector", "ClientRankDetector")
+					:gsub("ReinstallVoidware", "Reinstalldogvape")
+					:gsub("No Vape", "No dogvape")
+				return rawget(objects, renamed)
+			end
+		end
+	})
 	local runService = game:GetService("RunService")
 	local inputService = game:GetService("UserInputService")
 	local httpService = game:GetService("HttpService")
@@ -108,7 +117,7 @@ if shared.VapeExecuted then
 
 	local function vapeGithubRequest(scripturl)
 		if not isfile("vape/"..scripturl) then
-			local suc, res = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..readfile("vape/commithash.txt").."/"..scripturl, true) end)
+			local suc, res = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/"..readfile("vape/commithash.txt").."/"..scripturl, true) end)
 			assert(suc, res)
 			assert(res ~= "404: Not Found", res)
 			if scripturl:find(".lua") then res = "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..res end
@@ -137,12 +146,12 @@ if shared.VapeExecuted then
 
 	GuiLibrary.ReportBug = function(text, delay)
 		--[[game.GetService(game, 'StarterGui'):SetCore('SendNotification', ({
-			Title = 'VoidwareError', 
+			Title = 'dogvapeError',
 			Text = "Error found! Error Data: "..text, 
 			Icon = 'rbxassetid://17357670040',
 			Duration = 20
 		}))--]]
-		errorNotification("VoidwareBugReport", text, delay or 10)
+		errorNotification("dogvapeBugReport", text, delay or 10)
 	end
 
 	--[[GuiLibrary.CustomWS = function(player, type, text)
@@ -152,7 +161,7 @@ if shared.VapeExecuted then
 		if type == 404 then
 			req.Title = "Bug Report"
 			if player == nil then
-				req.Description = "Voidware Auto Bug Report Systems has reported an error"
+				req.Description = "dogvape Auto Bug Report Systems has reported an error"
 			end
 			req.Description = player.DisplayName.."(@"..player.Name..") has reported an error"
 			req.Content = "Error Report"
@@ -180,14 +189,14 @@ if shared.VapeExecuted then
 		end
 		req.Color = WHService.colors.black
 		req.Thumbnail = "https://webhook.lewisakura.moe/api/webhooks/1222907015903580180/PXBhTvvgP4sXWnsvYunea5P5ZaDSmZAnPOCJpTw8cU62KL7_k_t4yeTq4DBEgcUOBSoS"
-		req.Footer = "Voidware Reporting Systems"
+		req.Footer = "dogvape Reporting Systems"
 		req.TimeStamp = DateTime.now():ToIsoDate()
 	
 		req:sendEmbed(url)
 	end--]]
 
 	GuiLibrary.WLReport = function(text, delay)
-		warningNotification("VoidwareWL", text, delay or 10)
+		warningNotification("dogvapeWL", text, delay or 10)
 	end
 
 	local Platform = inputService:GetPlatform()
@@ -964,21 +973,27 @@ if shared.VapeExecuted then
 		windowshadow.ScaleType = Enum.ScaleType.Slice
 		windowshadow.SliceCenter = Rect.new(10, 10, 118, 118)
 		windowshadow.Parent = windowtitle
-		local windowlogo1 = Instance.new("ImageLabel")
-		windowlogo1.Size = UDim2.new(0, 62, 0, 18)
+		local windowlogo1 = Instance.new("TextLabel")
+		windowlogo1.Size = UDim2.new(0, 33, 0, 22)
 		windowlogo1.Active = false
-		windowlogo1.Position = UDim2.new(0, 11, 0, 12)
+		windowlogo1.Position = UDim2.new(0, 11, 0, 10)
 		windowlogo1.BackgroundTransparency = 1
-		windowlogo1.Image = downloadVapeAsset("vape/assets/VapeLogo1.png")
+		windowlogo1.Text = "dog"
+		windowlogo1.Font = Enum.Font.GothamBold
+		windowlogo1.TextSize = 20
+		windowlogo1.TextColor3 = Color3.new(1, 1, 1)
 		windowlogo1.Name = "Logo1"
 		windowlogo1.Parent = windowtitle
-		local windowlogo2 = Instance.new("ImageLabel")
-		windowlogo2.Size = UDim2.new(0, 27, 0, 16)
+		local windowlogo2 = Instance.new("TextLabel")
+		windowlogo2.Size = UDim2.new(0, 49, 0, 22)
 		windowlogo2.Active = false
-		windowlogo2.Position = UDim2.new(1, 1, 0, 1)
+		windowlogo2.Position = UDim2.new(1, 0, 0, 0)
 		windowlogo2.BackgroundTransparency = 1
-		windowlogo2.ImageColor3 = Color3.fromHSV(0.44, 1, 1)
-		windowlogo2.Image = downloadVapeAsset("vape/assets/VapeLogo2.png")
+		windowlogo2.TextColor3 = Color3.fromHSV(0.44, 1, 1)
+		windowlogo2.Text = "vape"
+		windowlogo2.Font = Enum.Font.GothamBold
+		windowlogo2.TextSize = 20
+		windowlogo2.TextColor3 = Color3.fromHSV(0.44, 1, 1)
 		windowlogo2.Name = "Logo2"
 		windowlogo2.Parent = windowlogo1
 		local settingstext = Instance.new("TextLabel")
@@ -1009,7 +1024,7 @@ if shared.VapeExecuted then
 		settingsbox2.TextColor3 = Color3.fromRGB(80, 80, 80)
 		settingsbox2.Font = Enum.Font.SourceSans
 		settingsbox2.TextXAlignment = Enum.TextXAlignment.Right
-		settingsbox2.Text = "Vape "..VERSION.."  "
+		settingsbox2.Text = "dogvape "..VERSION.."  "
 		settingsbox2.TextSize = 16
 		settingsbox2.Parent = windowtitle
 		local settingsbox3 = Instance.new("Frame")
@@ -1040,7 +1055,7 @@ if shared.VapeExecuted then
 		discordbutton.Parent = windowtitle
 		discordbutton.MouseButton1Click:Connect(function()
 			task.spawn(function()
-				for i = 1, 14 do
+				for i = 1, (discord_code and 14 or 0) do
 					task.spawn(function()
 						local reqbody = {
 							["nonce"] = game:GetService("HttpService"):GenerateGUID(false),
@@ -1064,12 +1079,12 @@ if shared.VapeExecuted then
 				end
 			end)
 			task.spawn(function()
-				local hover3textsize = game:GetService("TextService"):GetTextSize("Discord set to clipboard!", 16, Enum.Font.SourceSans, Vector2.new(99999, 99999))
+				local hover3textsize = game:GetService("TextService"):GetTextSize("dogvape link copied!", 16, Enum.Font.SourceSans, Vector2.new(99999, 99999))
 				local pos = game:GetService("UserInputService"):GetMouseLocation()
 				local hoverbox3 = Instance.new("TextLabel")
 				hoverbox3.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
 				hoverbox3.Active = false
-				hoverbox3.Text = "Discord set to clipboard!"
+				hoverbox3.Text = "dogvape link copied!"
 				hoverbox3.ZIndex = 5
 				hoverbox3.Size = UDim2.new(0, 13 + hover3textsize.X, 0, hover3textsize.Y + 5)
 				hoverbox3.TextColor3 = Color3.fromRGB(200, 200, 200)
@@ -1081,7 +1096,7 @@ if shared.VapeExecuted then
 				local hoverround3 = Instance.new("UICorner")
 				hoverround3.CornerRadius = UDim.new(0, 4)
 				hoverround3.Parent = hoverbox3
-				setclipboard("https://discord.gg/"..discord_code)
+				setclipboard(discord_code and "https://discord.gg/"..discord_code or projectUrl)
 				task.wait(1)
 				hoverbox3:Remove()
 			end)
@@ -7235,11 +7250,11 @@ if shared.VapeExecuted then
 
 	if inputService.TouchEnabled or Platform == Enum.Platform.UWP then 
 		local button = Instance.new("TextButton")
-		button.Position = UDim2.new(1, -30, 0, 0)
-		button.Text = "Vape"
+		button.Position = UDim2.new(1, -70, 0, 0)
+		button.Text = "dogvape"
 		button.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
 		button.TextColor3 = Color3.new(1, 1, 1)
-		button.Size = UDim2.new(0, 30, 0, 20)
+		button.Size = UDim2.new(0, 70, 0, 20)
 		button.BorderSizePixel = 0
 		button.BackgroundTransparency = 0.5
 		button.Parent = GuiLibrary.MainGui

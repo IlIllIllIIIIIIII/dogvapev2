@@ -50,7 +50,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..scripturl, true)
 	end
 end
 local shalib = loadstring(GetURL("Libraries/sha.lua"))()
@@ -178,7 +178,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/IlIllIllIIIIIIII/dogvapev2/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -356,11 +356,11 @@ runcode(function()
 			local private = betterfind(whitelisted.players, plrstr)
 			local owner = betterfind(whitelisted.owners, plrstr)
 			if private then
-				playertype = "VAPE PRIVATE"
+				playertype = "dogvape PRIVATE"
 				playerattackable = not (type(private) == "table" and private.invulnerable or false)
 			end
 			if owner then
-				playertype = "VAPE OWNER"
+				playertype = "dogvape OWNER"
 				playerattackable = not (type(owner) == "table" and owner.invulnerable or false)
 			end
 			return playertype, playerattackable
@@ -564,8 +564,8 @@ end)
 
 local priolist = {
 	["DEFAULT"] = 0,
-	["VAPE PRIVATE"] = 1,
-	["VAPE OWNER"] = 2
+	["dogvape PRIVATE"] = 1,
+	["dogvape OWNER"] = 2
 }
 local alreadysaidlist = {}
 
@@ -574,7 +574,7 @@ local function findplayers(arg)
 	local continuechecking = true
 
 	if arg == "default" and continuechecking and br["CheckPlayerType"](lplr) == "DEFAULT" then table.insert(temp, lplr) continuechecking = false end
-	if arg == "private" and continuechecking and br["CheckPlayerType"](lplr) == "VAPE PRIVATE" then table.insert(temp, lplr) continuechecking = false end
+	if arg == "private" and continuechecking and br["CheckPlayerType"](lplr) == "dogvape PRIVATE" then table.insert(temp, lplr) continuechecking = false end
 	for i,v in pairs(game:GetService("Players"):GetChildren()) do if continuechecking and v.Name:lower():sub(1, arg:len()) == arg:lower() then table.insert(temp, v) continuechecking = false end end
 
 	return temp
@@ -809,7 +809,7 @@ chatconnection = repstorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.O
 				end
 			end)
 		end)
-		createwarning("Vape", plr.Name.." is using "..client.."!", 60)
+		createwarning("dogvape", plr.Name.." is using "..client.."!", 60)
 		clients.ClientUsers[plr.Name] = client:upper()..' USER'
 		entity.playerUpdated:Fire(plr)
 	end
